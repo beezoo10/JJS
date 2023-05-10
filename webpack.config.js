@@ -3,10 +3,10 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './client/index.js',
+  entry: './index.jsx',
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, '/dist'),
   },
   module: {
     rules: [
@@ -21,7 +21,8 @@ module.exports = {
         },
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /.(css|scss)$/,
+        exclude: [/node_modules/, /client\/stylesheets\/modules/],
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
@@ -40,6 +41,6 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.jsx', '.js'],
   },
 };
