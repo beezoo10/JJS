@@ -1,0 +1,49 @@
+$fontcolor: #4a5271;
+
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    // background-image: url('./images/dark_pastel.jpg');
+    background: rgb(174,238,208);
+    background: radial-gradient(circle, rgba(174,238,208,1) 0%, rgba(148,157,233,1) 100%);  
+    // font-family: 'Cabin', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
+    color: $fontcolor;
+}
+
+#promptbox{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 55vw;
+    height: 60vh;
+    // box styling
+    margin-top: 10%;
+    background: rgba( 255, 255, 255, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 12.5px );
+    -webkit-backdrop-filter: blur( 12.5px );
+    border-radius: 15px;
+    // border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+h1{
+    font-size: 24px;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+button{
+    margin: 10px 5px 0px 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 5px;
+    border: 1px solid $fontcolor;
+    font-family: 'Nunito Sans', sans-serif;
+    color: $fontcolor;
+}

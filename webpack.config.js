@@ -1,17 +1,20 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const dotenv = require('dotenv').config( {
+  path: path.join(__dirname, './.env')
+} );
 
 module.exports = {
   mode: 'development',
-  entry: './index.jsx',
+  entry: './client/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'build'),
   },
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -25,11 +28,24 @@ module.exports = {
         exclude: [/node_modules/, /client\/stylesheets\/modules/],
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //     },
+      //   ],
+      // },
     ],
   },
   devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'build'),
+      publicPath: 'build',
+    },
+    open: true,
     proxy: {
-      '/test': {
+      '/**': {
         target: 'http://localhost:3000/',
       },
     },
@@ -37,7 +53,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.resolve(__dirname, './public/index.html'),
+      template: path.resolve(__dirname, '/client/public/index.html'),
     }),
   ],
   resolve: {
